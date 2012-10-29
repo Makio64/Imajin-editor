@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/3.3">
+  <id>ImajinEditor</id>
+  <versionNumber>1.0</versionNumber>
+  <filename>ImajinEditor</filename>
+  <name>ImajinEditor</name>
+  <initialWindow>
+    <title>ImajinEditor</title>
+    <content>ImajinEditor.swf</content>
+    <systemChrome>standard</systemChrome>
+    <transparent>false</transparent>
+    <visible>true</visible>
+    <minimizable>true</minimizable>
+    <maximizable>true</maximizable>
+    <resizable>true</resizable>
+	<renderMode>direct</renderMode>
+  </initialWindow>
+  <!-- 
+	More options:
+	http://livedocs.adobe.com/flex/3/html/File_formats_1.html#1043413
+	-->
+</application>
