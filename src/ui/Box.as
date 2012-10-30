@@ -1,6 +1,7 @@
 package ui 
 {
 	import flash.geom.Point;
+	import starling.display.DisplayObjectContainer;
 	import starling.display.Shape;
 	import starling.display.Sprite;
 	import starling.events.Touch;
@@ -21,15 +22,17 @@ package ui
 		private var _background:Shape;
 		private var _dragClic:Point;
 		private var _startPosition:Point;
+		private var _action:String;
 		
-		public function Box(x:int, y:int) 
+		public function Box(container:DisplayObjectContainer, x:int, y:int) 
 		{
 			this.x = x;
 			this.y = y;
-			
-			_background = new Shape();
-			drawBackground();
+			this._action = none;
+			this._background = new Shape();
 			addChild(_background);
+			
+			drawBackground();
 			
 			var title:TextField = new TextField(80, 30, "text", "Verdana", 12, 0xCCCCCC, false);
 			title.hAlign = HAlign.CENTER;
@@ -37,6 +40,13 @@ package ui
 			addChild(title);
 			
 			addEventListener(TouchEvent.TOUCH, onTouch);
+			
+			container.addChild(this);
+		}
+		
+		public function linkTo(box2:Box):void 
+		{
+			new Link(this, box2);
 		}
 		
 		private function drawBackground():void 
@@ -65,12 +75,19 @@ package ui
 				switch(touch.phase) {
 					case TouchPhase.BEGAN:
 						selected = true;
+						if ( position.x < 10) {
+							_action = "link";
+							_tmpLink = new Link(this);
+						} else {
+							_action = "drag";
+						}
 						_dragClic = position.clone();
 						//_startPosition = localToGlobal(position);
 						break;
 					case TouchPhase.MOVED:
 						x = localToGlobal(position).x - _dragClic.x;
 						y = localToGlobal(position).y - _dragClic.y;
+						dispatchEventWith("moved");
 						break;
 					case TouchPhase.ENDED:
 							selected = false;
