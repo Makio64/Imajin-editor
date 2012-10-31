@@ -11,14 +11,14 @@ package
 	 */
 	public class Core extends Sprite 
 	{
+		static public var instance:Core;
+		
 		public function Core() 
 		{
-			
-			var textField:TextField = new TextField(400, 300, "Welcome to Starling!");
-			addChild(textField);
+			instance = this;
+			var box3:Box = new Box(this, 230, 100);
 			var box1:Box = new Box(this, 30, 30);
 			var box2:Box = new Box(this, 130, 130);
-			box1.linkTo(box2);
 		}
 		
 		
