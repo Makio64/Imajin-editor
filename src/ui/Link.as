@@ -1,9 +1,8 @@
 package ui 
 {
 	import flash.geom.Point;
-	import starling.events.Event;
 	import starling.display.Shape;
-	import starling.display.Sprite;
+	import starling.events.Event;
 	
 	/**
 	 * Link - ImajinEditor

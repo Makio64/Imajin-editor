@@ -74,6 +74,7 @@ package ui
 		
 		private function onTouch(e:TouchEvent):void 
 		{
+			e.stopImmediatePropagation();
 			var touch:Touch = e.getTouch(this);
 			if (touch)
 			{
